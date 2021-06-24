@@ -21,6 +21,8 @@ public class VaultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vault);
 
+        Intent intent = getIntent();
+
         listView = findViewById(R.id.listview);
 
         ArrayList<String> arrayList = new ArrayList<>();
