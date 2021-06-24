@@ -2,6 +2,7 @@ package com.example.secureshield20;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,7 +47,17 @@ public class VaultActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(VaultActivity.this, "You will edit: " + arrayList.get(position),Toast.LENGTH_SHORT).show();
+                editItem();
+
             }
         });
     }
+
+    public void editItem(){
+        Intent editIntent = new Intent(this, editActivity.class);
+        startActivity(editIntent);
+
+    }
+
+
 }
