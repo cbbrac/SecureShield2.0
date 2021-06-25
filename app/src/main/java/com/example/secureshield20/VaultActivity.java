@@ -62,5 +62,10 @@ public class VaultActivity extends AppCompatActivity {
         startActivity(editIntent2);
     }
 
+    public void goToSettings(View view) {
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        startActivity(settingsIntent);
+    }
+
 
 }
