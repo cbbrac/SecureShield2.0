@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/settingsConfirmPassword"
         android:layout_width="374dp"
         android:layout_height="36dp"
         android:layout_marginStart="18dp"
@@ -47,14 +47,14 @@
         android:layout_marginBottom="4dp"
         android:text="Username"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName6"
+        app:layout_constraintBottom_toTopOf="@+id/settingsNewPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsMasterUsername" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/settingsMasterUsername"
         android:layout_width="374dp"
         android:layout_height="36dp"
         android:layout_marginStart="18dp"
@@ -78,14 +78,14 @@
         android:layout_marginBottom="4dp"
         android:text="Name"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/settingsMasterUsername"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/settingsNewPassword"
         android:layout_width="374dp"
         android:layout_height="36dp"
         android:layout_marginStart="18dp"
@@ -109,14 +109,14 @@
         android:layout_marginBottom="4dp"
         android:text="Website"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName8"
+        app:layout_constraintBottom_toTopOf="@+id/settingsPin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsConfirmPassword" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
+        android:id="@+id/settingsPin"
         android:layout_width="374dp"
         android:layout_height="36dp"
         android:layout_marginStart="18dp"
@@ -140,10 +140,10 @@
         android:layout_marginBottom="4dp"
         android:text="Password"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName7"
+        app:layout_constraintBottom_toTopOf="@+id/settingsConfirmPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsNewPassword" />
 
 
     <TextView
@@ -160,7 +160,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsPin" />
 
     <EditText
         android:id="@+id/editTextTextPersonName10"
