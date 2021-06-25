@@ -9,14 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SecureShield20">
-        <activity android:name=".VaultActivity"
+        <activity android:name=".newItem"></activity>
+        <activity
+            android:name=".VaultActivity"
             android:parentActivityName=".LogInActivity">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LogInActivity" />
         </activity>
-        <activity android:name=".editActivity"></activity>
+        <activity android:name=".editActivity" />
         <activity android:name=".LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

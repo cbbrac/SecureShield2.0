@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class editActivity extends AppCompatActivity {
 
@@ -15,5 +16,9 @@ public class editActivity extends AppCompatActivity {
 
     Intent editIntent = getIntent();
 
+    public void saveItem(View view){
 
+        Intent intent = new Intent(this, VaultActivity.class);
+        startActivity(intent);
+    }
 }

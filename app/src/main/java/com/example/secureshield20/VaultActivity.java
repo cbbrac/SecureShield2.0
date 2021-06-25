@@ -21,8 +21,6 @@ public class VaultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vault);
 
-        Intent intent = getIntent();
-
         listView = findViewById(R.id.listview);
 
         ArrayList<String> arrayList = new ArrayList<>();
@@ -50,7 +48,6 @@ public class VaultActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(VaultActivity.this, "You will edit: " + arrayList.get(position),Toast.LENGTH_SHORT).show();
                 editItem();
-
             }
         });
     }
@@ -59,6 +56,10 @@ public class VaultActivity extends AppCompatActivity {
         Intent editIntent = new Intent(this, editActivity.class);
         startActivity(editIntent);
 
+    }
+    public void addItem(View view){
+        Intent editIntent2 = new Intent(this, newItem.class);
+        startActivity(editIntent2);
     }
 
 
