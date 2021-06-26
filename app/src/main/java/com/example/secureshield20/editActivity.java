@@ -21,4 +21,8 @@ public class editActivity extends AppCompatActivity {
         Intent intent = new Intent(this, VaultActivity.class);
         startActivity(intent);
     }
+
+    public void deleteItem(View view) {
+
+    }
 }
