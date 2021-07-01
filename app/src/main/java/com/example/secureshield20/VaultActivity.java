@@ -28,7 +28,7 @@ public class VaultActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    Switch mySwitch;
+    Switch mySwitch;        // here for debugging purposes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,5 +76,9 @@ public class VaultActivity extends AppCompatActivity {
             }
             mAdapter.notifyDataSetChanged();
         }
+    }
+
+    public void clipboardButton(View view) {
+        // TODO this function should copy the password of the selected account
     }
 }

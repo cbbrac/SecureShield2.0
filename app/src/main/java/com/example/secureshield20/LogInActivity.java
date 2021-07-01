@@ -45,7 +45,7 @@ public class LogInActivity extends AppCompatActivity {
         String inputPass = ePassword.getText().toString();
 
         isValid = authentication(inputUsername, inputPass);
-        if(isValid){                                            // TODO this should be if(!isValid){
+        if(!isValid){                                       // TODO this should be if (!isValid){
             Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show();
         } else{
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();

@@ -78,6 +78,7 @@ public class editActivity extends AppCompatActivity {
     }
 
     public void deleteItem(View view) {
+        // TODO code function logic, this is executed when the red button is pressed
         //Toast.makeText(this, "Account Deleted Successfully", Toast.LENGTH_SHORT).show();
     }
 }
