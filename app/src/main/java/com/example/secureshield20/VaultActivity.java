@@ -1,71 +1,80 @@
 package com.example.secureshield20;
 
+import androidx.annotation.LongDef;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class VaultActivity extends AppCompatActivity {
 
-    ListView listView;
+    private static final String TAG = "Accounts List";
+
+    MyApplication myApplication = new MyApplication();
+    List<Account> accountList = new ArrayList<>();
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+    Switch mySwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vault);
 
-        listView = findViewById(R.id.listview);
+        accountList = myApplication.getAccountList();
 
-        ArrayList<String> arrayList = new ArrayList<>();
+        Collections.sort(accountList, Account.AccountsSortAZ);
+        //mAdapter.notifyDataSetChanged();
 
-        arrayList.add("Facebook");
-        arrayList.add("Instagram");
-        arrayList.add("GMail");
-        arrayList.add("YouTube");
-        arrayList.add("Netflix");
-        arrayList.add("Disney+");
-        arrayList.add("Spotify");
-        arrayList.add("Github");
-        arrayList.add("StackOverflow");
-        arrayList.add("Reddit");
-        arrayList.add("Target");
-        arrayList.add("Amazon");
-        arrayList.add("U.S. Bank");
+        mySwitch = findViewById(R.id.switch1);
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+        Log.d(TAG, "onCreate: " + accountList.toString());
+        Toast.makeText(this, "Accounts here: " + accountList.size(), Toast.LENGTH_LONG).show();
+        
+        recyclerView = findViewById(R.id.rv_accountsList);
+        recyclerView.setHasFixedSize(true);
 
-        listView.setAdapter(arrayAdapter);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(VaultActivity.this, "You will edit: " + arrayList.get(position),Toast.LENGTH_SHORT).show();
-                editItem();
-            }
-        });
-    }
-
-    public void editItem(){
-        Intent editIntent = new Intent(this, editActivity.class);
-        startActivity(editIntent);
-
-    }
-    public void addItem(View view){
-        Intent editIntent2 = new Intent(this, newItem.class);
-        startActivity(editIntent2);
+        mAdapter = new RecyclerViewAdapter(accountList, this);
+        recyclerView.setAdapter(mAdapter);
     }
 
     public void goToSettings(View view) {
-        Intent settingsIntent = new Intent(this, SettingsActivity.class);
-        startActivity(settingsIntent);
+        Intent intent = new Intent(VaultActivity.this, SettingsActivity.class);
+        startActivity(intent);
     }
 
+    public void addItem(View view) {
+        Intent intent = new Intent(VaultActivity.this, NewAccountActivity.class);
+        startActivity(intent);
+    }
 
+    public void switchClick(View view) {
+        if (view.getId()==R.id.switch1) {
+            if (mySwitch.isChecked()) {
+                Collections.sort(accountList, Account.AccountsSortById);
+                Toast.makeText(this, "Sorted by ID", Toast.LENGTH_SHORT).show();
+            } else {
+                Collections.sort(accountList, Account.AccountsSortAZ);
+                Toast.makeText(this, "Sorted by name", Toast.LENGTH_SHORT).show();
+            }
+            mAdapter.notifyDataSetChanged();
+        }
+    }
 }
