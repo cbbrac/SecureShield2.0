@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,13 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.gson.JsonSyntaxException;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -44,16 +52,42 @@ public class VaultActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: " + accountList.toString());
         Toast.makeText(this, "Accounts here: " + accountList.size(), Toast.LENGTH_LONG).show();
-        
+
         recyclerView = findViewById(R.id.rv_accountsList);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+//        try{
+//            JSONObject jsonObject = new JSONObject(getFromJson());
+//            JSONArray jsonArray = jsonObject.getJSONArray("firstName");
+//            for (int i = 0; i < jsonArray.length(); i++){
+//            JSONObject userData = jsonArray.getJSONObject();
+//                    .add()
+//        }
+
 
         mAdapter = new RecyclerViewAdapter(accountList, this);
         recyclerView.setAdapter(mAdapter);
     }
+
+    public String getFromJson() {
+        String json = null;
+        try {
+            InputStream inputStream = getAssets().open("securityShield.json");
+            int size = inputStream.available();
+            byte[] bufferData = new byte[size];
+            inputStream.read(bufferData);
+            inputStream.close();
+            json = new String(bufferData, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+
 
     public void goToSettings(View view) {
         Intent intent = new Intent(VaultActivity.this, SettingsActivity.class);
