@@ -1,16 +1,20 @@
 package com.example.secureshield20;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
     Button saveButton;
-    EditText settingsNewPassword, settingsConfirmPassword, settingsID;
+    EditText settingsUsername, settingsNewPassword, settingsConfirmPassword, settingsID;
     TextView passwordError;
 
     @Override
@@ -18,33 +22,47 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        settingsUsername = findViewById(R.id.settingsMasterUsername);
         //User inputs new password
         settingsNewPassword = findViewById(R.id.settingsNewPassword);
         //user inputs password again to confirm
         settingsConfirmPassword = findViewById(R.id.settingsConfirmPassword);
         //error message to display if password does not match, or is left blank.
         passwordError = findViewById(R.id.settingsConfirmPassword);
+
+        SharedPreferences sharedPref = getSharedPreferences("securityShield.txt", Context.MODE_PRIVATE);
+
+        String usernameLoaded = sharedPref.getString("USERNAME","");
+        String passwordLoaded = sharedPref.getString("PASSWORD","");
+
+        settingsUsername.setText(usernameLoaded);
+        settingsNewPassword.setText(passwordLoaded);
     }
 
-    private boolean validatePassword(){
+    public void changePassword(View view){
+        String inputUsername = settingsUsername.getText().toString();
         String inputPassword = settingsNewPassword.getText().toString();
         String confirmPasswordInput = settingsConfirmPassword.getText().toString();
 
         if(inputPassword.isEmpty()){
             // error message if the field is left blank
             passwordError.setText("Field cannot be empty.");
-            return false;
         } if (inputPassword.length() < 5){
             //error message if the password length is less than 5 characters
             passwordError.setText("Password must be more than 5 characters");
-            return false;
         } if (!inputPassword.equals(confirmPasswordInput)){
             // error message if the confirm password does not match the new password
             passwordError.setText("Passwords do not match.");
-            return false;
         } else {
             passwordError.setText("Passwords match!");
-            return true;
+            SharedPreferences sharedPref = getSharedPreferences("securityShield.txt", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+
+            editor.putString("USERNAME", inputUsername);
+            editor.putString("PASSWORD", inputPassword);
+            editor.apply();
+
+            Toast.makeText(this, "Login changed!", Toast.LENGTH_SHORT).show();
         }
     }
 }
