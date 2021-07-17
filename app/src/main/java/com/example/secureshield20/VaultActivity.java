@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.gson.JsonSyntaxException;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -33,7 +34,13 @@ public class VaultActivity extends AppCompatActivity {
     MyApplication myApplication = new MyApplication();
     List<Account> accountList = new ArrayList<>();
 
+
     private RecyclerView recyclerView;
+    ArrayList<String> nameList = new ArrayList<>();
+    ArrayList<String> usernameList = new ArrayList<>();
+    ArrayList<String> passList = new ArrayList<>();
+    ArrayList<String> webList = new ArrayList<>();
+    ArrayList<String> uriList = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     Switch mySwitch;        // here for debugging purposes
@@ -53,41 +60,47 @@ public class VaultActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: " + accountList.toString());
         Toast.makeText(this, "Accounts here: " + accountList.size(), Toast.LENGTH_LONG).show();
 
-        recyclerView = findViewById(R.id.rv_accountsList);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//        try{
-//            JSONObject jsonObject = new JSONObject(getFromJson());
-//            JSONArray jsonArray = jsonObject.getJSONArray("firstName");
-//            for (int i = 0; i < jsonArray.length(); i++){
-//            JSONObject userData = jsonArray.getJSONObject();
-//                    .add()
-//        }
 
+        try {
+            JSONObject obj = new JSONObject(loadJSONfromAssets());
 
-        mAdapter = new RecyclerViewAdapter(accountList, this);
-        recyclerView.setAdapter(mAdapter);
+            JSONArray accountsArray = obj.getJSONArray("account");
+            for (int i = 0; i < accountsArray.length(); i++) {
+                JSONObject accounts = accountsArray.getJSONObject(i);
+                nameList.add(accounts.getString("name"));
+                usernameList.add(accounts.getString("username"));
+                passList.add(accounts.getString("password"));
+                webList.add(accounts.getString("website"));
+                uriList.add(accounts.getString("uri"));
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(VaultActivity.this, nameList, usernameList, passList, webList, uriList);
+        recyclerView.setAdapter(adapter);
     }
 
-    public String getFromJson() {
+    private String loadJSONfromAssets() {
         String json = null;
-        try {
-            InputStream inputStream = getAssets().open("securityShield.json");
-            int size = inputStream.available();
-            byte[] bufferData = new byte[size];
-            inputStream.read(bufferData);
-            inputStream.close();
-            json = new String(bufferData, "UTF-8");
+        try{
+            InputStream is = getAssets().open("securityShield.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8" );
         } catch (IOException e) {
             e.printStackTrace();
             return null;
-        }
-        return json;
+        } return json;
     }
-
-
 
     public void goToSettings(View view) {
         Intent intent = new Intent(VaultActivity.this, SettingsActivity.class);

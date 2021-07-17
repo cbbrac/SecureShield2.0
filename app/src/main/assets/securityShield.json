@@ -1,20 +1,37 @@
-[
-  {
-    "newAccount": {
-      "name" : "Facebook",
-      "username": "melavila",
-      "password": "1234",
-      "website": "https://www.facebook.com",
+{
+  "account": [
+    {
+      "name": "Facebook",
+      "username": "mela",
+      "password": "12345",
+      "website": "http://www.facebook.com",
       "uri": ""
-    }
-  },
-  {
-    "newAccount": {
-      "name" : "Twitter",
-      "username": "melavila",
-      "password": "1234",
-      "website": "https://www.twitter.com",
+    },
+    {
+      "name": "Twitter",
+      "username": "mela",
+      "password": "123456",
+      "website": "http://www.twitter.com",
       "uri": ""
-    }
-  }
-]
+    },
+    {
+      "name": "Instagram",
+      "username": "mela",
+      "password": "12345678",
+      "website": "http://www.instagram.com",
+      "uri": ""
+    },
+    {
+      "name": "Instagram",
+      "username": "mela",
+      "password": "12345",
+      "website": "http://www.facebook.com",
+      "uri": ""
+    },
+    {
+      "name": "Instagram",
+      "username": "mela",
+      "password": "12345",
+      "website": "http://www.facebook.com",
+      "uri": ""
+    }]}

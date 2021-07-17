@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-
 public class LogInActivity extends AppCompatActivity {
     private EditText eUsername;
     private EditText ePassword;
