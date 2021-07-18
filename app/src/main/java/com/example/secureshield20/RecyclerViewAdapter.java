@@ -21,19 +21,22 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     Context ctx;
+    List<Account> accountList;
     ArrayList<String> nameList;
     ArrayList<String> usernameList;
     ArrayList<String> passList;
     ArrayList<String> webList;
     ArrayList<String> uriList;
 
-    public RecyclerViewAdapter(Context ctx, ArrayList<String> nameList, ArrayList<String> usernameList, ArrayList<String> passList, ArrayList<String> webList, ArrayList<String> uriList) {
+    public RecyclerViewAdapter(Context ctx, List<Account> accountList, ArrayList<String> nameList, ArrayList<String> usernameList, ArrayList<String> passList, ArrayList<String> webList, ArrayList<String> uriList) {
         this.ctx = ctx;
         this.nameList = nameList;
         this.usernameList = usernameList;
         this.passList = passList;
         this.webList = webList;
         this.uriList = uriList;
+        this.accountList = accountList;
+
     }
     //    @NonNull
     @Override
@@ -45,64 +48,66 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return holder;
     }
 
-
-
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.name.setText(nameList.get(position));
-        holder.username.setText(usernameList.get(position));
-        holder.password.setText(passList.get(position));
-        holder.website.setText(webList.get(position));
-        holder.uri.setText(uriList.get(position));
-
-    //        holder.tv_accountName.setText(accountList.get(position).getName());
-//        Glide.with(this.context).load(accountList.get(position).getIconUrl()).into(holder.iv_accountIcon);
-//        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-
-//                Intent intent = new Intent(context, editActivity.class);
-//                intent.putExtra("id", accountList.get(position).getId());
-//                context.startActivity(intent);
-//                Toast.makeText(context,
-//                        "Sent ID #" + String.valueOf(accountList.get(position).getId()),
-//                        Toast.LENGTH_SHORT).show();
-            }
-//        });
-//        //  TODO bind clipboard function
-//    }
-
     @Override
     public int getItemCount() {
         return nameList.size();
     }
 
-//    public class MyViewHolder extends RecyclerView.ViewHolder{
-//        TextView tv_accountName;
-//        ImageView iv_accountIcon;
-//        ImageView iv_copyPassword;
-//        ConstraintLayout parentLayout;
-//
-//        public MyViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//            tv_accountName = itemView.findViewById(R.id.tv_accountName);
-//            iv_accountIcon = itemView.findViewById(R.id.iv_accountIcon);
-//            iv_copyPassword = itemView.findViewById(R.id.iv_clipboard);
-//            parentLayout = itemView.findViewById(R.id.oneLineAccountLayout);
-//        }
-//    }
-class MyViewHolder extends RecyclerView.ViewHolder{
-
-    TextView name, username, password, website, uri;
-
-    public MyViewHolder(View itemView) {
-        super(itemView);
-
-        name = (TextView) itemView.findViewById(R.id.name);
-        username = (TextView) itemView.findViewById(R.id.username);
-        password = (TextView) itemView.findViewById(R.id.password);
-        website = (TextView) itemView.findViewById(R.id.website);
-        uri = (TextView) itemView.findViewById(R.id.uri);
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
+        holder.tv_accountName.setText();
+        holder.tv_username.setText(accountList.get(position).getUsername());
+//        Glide.with(this.ctx).load(accountList.get(position).getIconUrl()).into(holder.iv_accountIcon);
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ctx, editActivity.class);
+                intent.putExtra("id", accountList.get(position).getId());
+                ctx.startActivity(intent);
+                Toast.makeText(ctx,
+                        "Sent ID #" + String.valueOf(accountList.get(position).getId()),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        //  TODO bind clipboard function
     }
-}
+
+//    @Override
+//    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
+//        holder.name.setText(nameList.get(position));
+//        holder.username.setText(usernameList.get(position));
+//        holder.password.setText(passList.get(position));
+//        holder.website.setText(webList.get(position));
+//        holder.uri.setText(uriList.get(position));
+
+
+    public class MyViewHolder extends RecyclerView.ViewHolder{
+        TextView tv_accountName;
+        TextView tv_username;
+        ImageView iv_copyPassword;
+        ConstraintLayout parentLayout;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tv_accountName = itemView.findViewById(R.id.nameItem);
+            tv_username = itemView.findViewById(R.id.userItem);
+            iv_copyPassword = itemView.findViewById(R.id.iv_clipboard);
+            parentLayout = itemView.findViewById(R.id.item);
+        }
+    }
+//class MyViewHolder extends RecyclerView.ViewHolder{
+//
+//    TextView name, username, password, website, uri;
+//
+//    public MyViewHolder(View itemView) {
+//        super(itemView);
+//        ImageView iv_accountIcon;
+//
+//        name = (TextView) itemView.findViewById(R.id.name);
+//        username = (TextView) itemView.findViewById(R.id.username);
+//        password = (TextView) itemView.findViewById(R.id.password);
+//        website = (TextView) itemView.findViewById(R.id.website);
+//        uri = (TextView) itemView.findViewById(R.id.uri);
+//        iv_accountIcon = itemView.findViewById(R.id.iv_accountIcon);
+//    }
 }

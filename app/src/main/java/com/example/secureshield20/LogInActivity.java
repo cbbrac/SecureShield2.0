@@ -31,8 +31,10 @@ public class LogInActivity extends AppCompatActivity {
         String inputPass = ePassword.getText().toString();
         Username = inputUsername;
         Password = inputPass;
+        String secShield = "securityShield";
+        String txtName = secShield+".txt";
 
-        SharedPreferences sharedPreferences = getSharedPreferences("securityShield.txt", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(txtName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("USERNAME", Username);

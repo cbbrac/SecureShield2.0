@@ -19,7 +19,7 @@ public class editActivity extends AppCompatActivity {
 
     private static final String TAG = "EDIT ACTIVITY";
     MyApplication myApplication = new MyApplication();
-    List<Account> accountList = new ArrayList<>();
+    List<String> accountList = new ArrayList<>();
 
     EditText name, username, password, website, uri;
     int id;
@@ -45,18 +45,18 @@ public class editActivity extends AppCompatActivity {
 
         Account account = null;
 
-        if (id >= 0) {
-            for (Account acc : accountList) {
-                if (acc.getId() == id) {
-                    account = acc;
-                }
-            }
-            name.setText(account.getName());
-            username.setText(account.getUsername());
-            password.setText(account.getPassword());
-            website.setText(account.getWebsite());
-            uri.setText(account.getUri());
-        }
+//        if (id >= 0) {
+//            for (Account acc : accountList) {
+//                if (acc.getId() == id) {
+//                    account = acc;
+//                }
+//            }
+//            name.setText(account.getName());
+//            username.setText(account.getUsername());
+//            password.setText(account.getPassword());
+//            website.setText(account.getWebsite());
+//            uri.setText(account.getUri());
+//        }
     }
 
     public void saveItem(View view){
@@ -65,10 +65,10 @@ public class editActivity extends AppCompatActivity {
         String stringPassword = password.getText().toString();
         String stringWebsite = website.getText().toString();
         String stringUri = uri.getText().toString();
-
-        Account updatedAccount = new Account(id, stringName, stringUsername, stringPassword,
-                stringWebsite, stringUri);
-        accountList.set(id, updatedAccount);
+//
+//        Account updatedAccount = new Account(id, stringName, stringUsername, stringPassword,
+//                stringWebsite, stringUri);
+//        accountList.set(id, updatedAccount);
 
         Intent intent = new Intent(this, VaultActivity.class);
         startActivity(intent);

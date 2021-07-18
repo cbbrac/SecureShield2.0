@@ -70,4 +70,12 @@
         android:onClick="switchClick"
         android:text="Switch" />
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="102dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="309dp"
+        android:text="TextView" />
+
 </RelativeLayout>
