@@ -21,8 +21,7 @@
                 android:value=".LogInActivity" />
         </activity>
         <activity android:name=".SettingsActivity"></activity>
-        <activity android:name=".NewAccountActivity"></activity>
-        <activity android:name=".editActivity" />
+        <activity android:name=".NewAndEditAccountActivity"></activity>
         <activity android:name=".LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

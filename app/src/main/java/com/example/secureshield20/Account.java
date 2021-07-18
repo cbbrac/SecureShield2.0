@@ -30,13 +30,6 @@ public class Account {
         }
     };
 
-    public static Comparator<Account> AccountsSortById = new Comparator<Account>() {
-        @Override
-        public int compare(Account acc1, Account acc2) {
-            return acc1.getId() - acc2.getId();
-        }
-    };
-
     @Override
     public String toString() {
         return "Account{" +
