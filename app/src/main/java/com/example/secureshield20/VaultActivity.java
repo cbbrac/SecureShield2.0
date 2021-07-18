@@ -83,8 +83,6 @@ public class VaultActivity extends AppCompatActivity {
 //        String name6 = sharedPref6.getString("name", "");
 //        String username56 = sharedPref6.getString("username", "");
 
-        mySwitch = findViewById(R.id.switch1);
-
         Log.d(TAG, "onCreate: " + accountList.toString());
         Toast.makeText(this, "Accounts here: " + accountList.size(), Toast.LENGTH_LONG).show();
 

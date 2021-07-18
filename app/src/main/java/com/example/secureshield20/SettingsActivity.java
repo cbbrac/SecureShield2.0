@@ -1,6 +1,7 @@
 package com.example.secureshield20;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -46,15 +47,14 @@ public class SettingsActivity extends AppCompatActivity {
 
         if(inputPassword.isEmpty()){
             // error message if the field is left blank
-            passwordError.setText("Field cannot be empty.");
+            Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
         } if (inputPassword.length() < 5){
             //error message if the password length is less than 5 characters
-            passwordError.setText("Password must be more than 5 characters");
+            Toast.makeText(this, "Password must be more than 5 characters", Toast.LENGTH_SHORT).show();
         } if (!inputPassword.equals(confirmPasswordInput)){
             // error message if the confirm password does not match the new password
-            passwordError.setText("Passwords do not match.");
+            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
         } else {
-            passwordError.setText("Passwords match!");
             SharedPreferences sharedPref = getSharedPreferences("securityShield.txt", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
 
@@ -62,7 +62,10 @@ public class SettingsActivity extends AppCompatActivity {
             editor.putString("PASSWORD", inputPassword);
             editor.apply();
 
-            Toast.makeText(this, "Login changed!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, VaultActivity.class);
+            startActivity(intent);
+
+            Toast.makeText(this, "Login changed successfully!", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -38,9 +38,8 @@
 
     <EditText
         android:id="@+id/accountPassword"
-        android:layout_width="374dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="4dp"
@@ -49,6 +48,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -132,6 +132,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accountPassword" />
 
+
     <EditText
         android:id="@+id/accountWebsite"
         android:layout_width="374dp"
@@ -147,7 +148,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
 
     <TextView
         android:id="@+id/textView5"
@@ -212,5 +212,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2"
         app:srcCompat="@drawable/icons8_left_arrow_50" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_generator"
+        android:layout_width="61dp"
+        android:layout_height="63dp"
+        android:backgroundTint="#D1D1D1"
+        android:clickable="true"
+        android:onClick="encryptionPass"
+        app:layout_constraintBottom_toBottomOf="@+id/accountPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/accountPassword"
+        app:layout_constraintTop_toTopOf="@+id/accountPassword"
+        app:srcCompat="@drawable/loop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,7 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.tv_accountName.setText();
+        holder.tv_accountName.setText(accountList.get(position).getName());
         holder.tv_username.setText(accountList.get(position).getUsername());
 //        Glide.with(this.ctx).load(accountList.get(position).getIconUrl()).into(holder.iv_accountIcon);
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +70,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
         //  TODO bind clipboard function
+    }
+
+    public void getSPLocation() {
     }
 
 //    @Override

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.security.NoSuchAlgorithmException;
@@ -29,7 +30,8 @@ public class NewAccountActivity extends AppCompatActivity {
     List<String> accountList = new ArrayList<>();
 
     EditText name, username, password, website, uri;
-    public String sName,sUsername, sPass, sWeb, sUri, nameT, passEncrypt, encrypt;
+    //TextView password;
+    public String sName,sUsername, sWeb, sUri, nameT, passEncrypt;
     int nextId;
 
     @SuppressLint("WrongViewCast")
@@ -52,37 +54,24 @@ public class NewAccountActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public String encryptionPass() {
-            try {
-                // creating the object of SecureRandom and getting instance
-                // By using getInstance() method
-                SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-
-                // Declaring the byte Array & converting the string into byte
-                byte[] b = sPass.getBytes();
-
-                // generating user-specified number of random bytes using nextBytes() method
-                sr.nextBytes(b);
-                String encrypt = Arrays.toString(b);
-            }
-
-            catch (NoSuchAlgorithmException e) {
-                //("Exception thrown : " + e);
-            }
-            catch (ProviderException e) {
-
-                //("Exception thrown : " + e);
-            }
+    public void encryptionPass(View view) {
+        PasswordGenerator pass = new PasswordGenerator();
+        pass.generatePassword(20);
+        passEncrypt = pass.getPasswordStr();
+        password.setText(passEncrypt);
+        try {
+            Toast.makeText(this, "Password created successfully", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Password not created", Toast.LENGTH_SHORT).show();
         }
-
-
+    }
 
     public void saveItem(View view){
 
         nextId = myApplication.getNextId();
         sName = name.getText().toString();
         sUsername= username.getText().toString();
-        sPass = password.getText().toString();
+        passEncrypt = password.getText().toString();
         sWeb = website.getText().toString();
         sUri= uri.getText().toString();
         nameT = myApplication.setNameTxt(sName);
@@ -92,7 +81,6 @@ public class NewAccountActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(nameT+".txt", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        encryptionPass();
         editor.putString("NAME", sName);
         editor.putString("USERNAME", sUsername);
         editor.putString("PASSWORD", passEncrypt);
