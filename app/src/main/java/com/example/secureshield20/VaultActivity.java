@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**Activity that will take the data from the RecyclerViewAdapter and will display it to the user.
+ * It contains methods to create intents to the Settings and the New and Edit Activities.
+ */
+
 public class VaultActivity extends AppCompatActivity {
 
     private static final String TAG = "Accounts List";
@@ -47,11 +51,12 @@ public class VaultActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }
 
+    //Method to create an intent to the SettingsActivity when the settings' button is pressed.
     public void goToSettings(View view) {
         Intent intent = new Intent(VaultActivity.this, SettingsActivity.class);
         startActivity(intent);
     }
-
+    //Method to create an intent to the NewAndEditActivity when the add button is pressed.
     public void addItem(View view) {
         Intent intent = new Intent(VaultActivity.this, NewAndEditAccountActivity.class);
         startActivity(intent);

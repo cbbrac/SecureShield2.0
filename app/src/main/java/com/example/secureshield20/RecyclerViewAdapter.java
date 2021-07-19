@@ -1,4 +1,7 @@
 package com.example.secureshield20;
+/**This class implements the Adapter and the ViewHolder classes to define how the data will
+ * be displayed.
+ */
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +30,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.context = context;
     }
 
+    //The method creates and initializes the ViewHolder and its associated View.
     @NonNull
     @Override
     public RecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -36,6 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return holder;
     }
 
+    //The method fetches the appropriate data and uses the data to fill in the view holder's layout.
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
         holder.tv_accountName.setText(accountList.get(position).getName());
@@ -53,6 +58,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //  TODO bind clipboard function
     }
 
+    //Method to get the size of the data set.
     @Override
     public int getItemCount() {
         return accountList.size();

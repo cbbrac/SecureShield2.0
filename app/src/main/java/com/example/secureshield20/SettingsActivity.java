@@ -12,9 +12,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**Activity that allows to change the data to access to the app. If the new username or password
+ * fulfills the requirements, it rewrites the .txt file of SharedPreferences and creates an intent
+ * to go back to the Vault screen.
+ */
+
 public class SettingsActivity extends AppCompatActivity {
 
-    Button saveButton;
     EditText settingsUsername, settingsNewPassword, settingsConfirmPassword, settingsID;
     TextView passwordError;
 
@@ -40,6 +44,8 @@ public class SettingsActivity extends AppCompatActivity {
         settingsNewPassword.setText(passwordLoaded);
     }
 
+    //Method called when Save button is clicked. It takes the inputs from the EditText fields,
+    //stores them into variables and saves them in SharedPreferences.
     public void changePassword(View view){
         String inputUsername = settingsUsername.getText().toString();
         String inputPassword = settingsNewPassword.getText().toString();

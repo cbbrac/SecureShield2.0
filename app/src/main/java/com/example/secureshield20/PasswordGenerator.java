@@ -1,5 +1,9 @@
 package com.example.secureshield20;
 
+/**Class that generates an encrypted password using the SecureRandom library, combining randomly
+ * different characters. It returns a password as a String.
+ */
+
 import java.security.SecureRandom;
 
 public class PasswordGenerator {
@@ -11,6 +15,10 @@ public class PasswordGenerator {
     private static final String dic = caps + small_caps + Numeric + special_char;
     private String passwordStr;
 
+    //Method that takes a parameter that will define the length of the password.
+    //It loops through the length, generating a random character taken from the caps, small_caps,
+    //numeric and special_character variables. Then, it appends that character to the StringBuilder
+    //and finally it converts it to a String and returns it.
     public void generatePassword(int len) {
         StringBuilder password = new StringBuilder();
 

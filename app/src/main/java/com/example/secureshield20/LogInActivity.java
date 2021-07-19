@@ -1,5 +1,10 @@
 package com.example.secureshield20;
 
+/** This is the launcher activity of the app. It allows the user to input the username and password
+ * data of the app. If the data is already stored, it will create an intent to go to the
+ * VaultActivity. If the data doesn't exist, the user will have to create an account. *
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -25,7 +30,8 @@ public class LogInActivity extends AppCompatActivity {
         ePassword = findViewById(R.id.passwordId);
     }
 
-    // Gets the inputs from the user and stores them in variables.
+    // Gets the inputs from the user and set them in variables that will be stored
+    // in SharedPreferences.
     public void createAccount(View view) {
         String inputUsername = eUsername.getText().toString();
         String inputPass = ePassword.getText().toString();

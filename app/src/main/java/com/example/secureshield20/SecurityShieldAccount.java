@@ -1,10 +1,13 @@
 package com.example.secureshield20;
+/**Abstract class to create SecurityShieldAccount objects. It has two string variables: the username
+ * and the password.
+ */
 
-public class securityShieldAccount {
+public class SecurityShieldAccount {
     private String username;
     private String password;
 
-    public securityShieldAccount(String username, String password) {
+    public SecurityShieldAccount(String username, String password) {
         this.username = username;
         this.password = password;
     }

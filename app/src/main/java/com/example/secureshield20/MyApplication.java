@@ -1,9 +1,10 @@
 package com.example.secureshield20;
+/**Class that will receive data stored as account objects in an ArrayList. This data will be
+ * accessed from different activities of the app. It contains the getter and setter of the ArrayList
+ */
 
 import android.app.Application;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MyApplication extends Application {

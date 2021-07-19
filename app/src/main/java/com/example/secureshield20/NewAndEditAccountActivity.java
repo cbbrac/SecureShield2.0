@@ -1,7 +1,10 @@
 package com.example.secureshield20;
 
-import androidx.appcompat.app.AppCompatActivity;
+/**Activity to create new accounts with the inputs of the user. Instantiates MyApplication in
+ * order to pass data which can be accessed from other classes.
+ */
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -75,11 +78,15 @@ public class NewAndEditAccountActivity extends AppCompatActivity {
         } else {}
     }
 
+    //Method called when the back arrow is clicked. It creates an intent that leads to the
+    // VaultActivity.
     public void goBack(View view){
         Intent intent = new Intent(NewAndEditAccountActivity.this, VaultActivity.class);
         startActivity(intent);
     }
 
+    //Method that instantiates the PasswordGenerator class and set the string of the return as
+    //the password.
     public void encryptionPass(View view) {
         PasswordGenerator pass = new PasswordGenerator();
         pass.generatePassword(20);
@@ -92,6 +99,10 @@ public class NewAndEditAccountActivity extends AppCompatActivity {
         }
     }
 
+
+    //Method that takes the input from the EditText and save the data as an object in the
+    // accountList of the MyApplication class. Then, creates an intent to go back to the
+    // VaultActivity.
     public void saveItem(View view){
 
         String nameString = name.getText().toString();
