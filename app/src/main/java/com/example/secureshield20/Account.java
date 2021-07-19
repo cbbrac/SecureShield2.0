@@ -1,4 +1,8 @@
 package com.example.secureshield20;
+/**Abstract class to create Account objects. It has seven variables: the id (int), the name,
+ * username, password, website, uri and iconUrl strings. It contains the getters and setters for
+ * each variable.
+ */
 
 import java.util.Comparator;
 
@@ -12,6 +16,7 @@ public class Account {
     private String uri = "";
     private String iconUrl = "https://www.google.com/s2/favicons?domain=";
 
+    //Constructor for the Account class.
     public Account(int id, String name, String username, String password, String website,
                    String uri) {
         this.id = id;
